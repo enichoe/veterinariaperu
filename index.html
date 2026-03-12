@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="VetCare Premium - Clínica veterinaria especializada con atención de calidad para tu mascota. Agenda tu cita hoy.">
+    <title>VetCare Premium | Clínica Veterinaria Especializada</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'display': ['Playfair Display', 'serif'],
+                        'body': ['DM Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        'vet': {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            200: '#99f6e4',
+                            300: '#5eead4',
+                            400: '#2dd4bf',
+                            500: '#14b8a6',
+                            600: '#0d9488',
+                            700: '#0f766e',
+                            800: '#115e59',
+                            900: '#134e4a',
+                        },
+                        'navy': {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e3a5f',
+                            900: '#0f2744',
+                        },
+                        'coral': '#f97316',
+                        'cream': '#fefdfb',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    
+</head>
+<body>
+    <!-- ========================================
+         LOADER
+    ======================================== -->
+    <div class="loader-container" id="loader">
+        <div class="loader-logo">
+            <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="40" cy="40" r="38" stroke="url(#loader-grad)" stroke-width="4"/>
+                <path d="M40 20C40 20 28 28 28 38C28 44.627 33.373 50 40 50C46.627 50 52 44.627 52 38C52 28 40 20 40 20Z" fill="#14b8a6"/>
+                <circle cx="30" cy="28" r="4" fill="#14b8a6"/>
+                <circle cx="50" cy="28" r="4" fill="#14b8a6"/>
+                <circle cx="24" cy="40" r="3" fill="#14b8a6"/>
+                <circle cx="56" cy="40" r="3" fill="#14b8a6"/>
+                <defs>
+                    <linearGradient id="loader-grad" x1="0" y1="0" x2="80" y2="80">
+                        <stop stop-color="#14b8a6"/>
+                        <stop offset="1" stop-color="#0d9488"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
+        <div class="loader-text">VetCare Premium</div>
+        <div class="paw-trail">
+            <svg class="paw" viewBox="0 0 24 24" fill="white">
+                <ellipse cx="12" cy="17" rx="5" ry="4"/>
+                <circle cx="6" cy="10" r="3"/>
+                <circle cx="18" cy="10" r="3"/>
+                <circle cx="9" cy="5" r="2.5"/>
+                <circle cx="15" cy="5" r="2.5"/>
+            </svg>
+            <svg class="paw" viewBox="0 0 24 24" fill="white">
+                <ellipse cx="12" cy="17" rx="5" ry="4"/>
+                <circle cx="6" cy="10" r="3"/>
+                <circle cx="18" cy="10" r="3"/>
+                <circle cx="9" cy="5" r="2.5"/>
+                <circle cx="15" cy="5" r="2.5"/>
+            </svg>
+            <svg class="paw" viewBox="0 0 24 24" fill="white">
+                <ellipse cx="12" cy="17" rx="5" ry="4"/>
+                <circle cx="6" cy="10" r="3"/>
+                <circle cx="18" cy="10" r="3"/>
+                <circle cx="9" cy="5" r="2.5"/>
+                <circle cx="15" cy="5" r="2.5"/>
+            </svg>
+            <svg class="paw" viewBox="0 0 24 24" fill="white">
+                <ellipse cx="12" cy="17" rx="5" ry="4"/>
+                <circle cx="6" cy="10" r="3"/>
+                <circle cx="18" cy="10" r="3"/>
+                <circle cx="9" cy="5" r="2.5"/>
+                <circle cx="15" cy="5" r="2.5"/>
+            </svg>
+            <svg class="paw" viewBox="0 0 24 24" fill="white">
+                <ellipse cx="12" cy="17" rx="5" ry="4"/>
+                <circle cx="6" cy="10" r="3"/>
+                <circle cx="18" cy="10" r="3"/>
+                <circle cx="9" cy="5" r="2.5"/>
+                <circle cx="15" cy="5" r="2.5"/>
+            </svg>
+        </div>
+    </div>
+
+    <!-- ========================================
+         NAVBAR
+    ======================================== -->
+    <nav class="navbar" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between">
+                <a href="#" class="flex items-center gap-3">
+                    <svg class="w-10 h-10" viewBox="0 0 40 40" fill="none">
+                        <circle cx="20" cy="20" r="18" stroke="#14b8a6" stroke-width="2"/>
+                        <path d="M20 10C20 10 14 14 14 19C14 22.314 16.686 25 20 25C23.314 25 26 22.314 26 19C26 14 20 10 20 10Z" fill="#14b8a6"/>
+                        <circle cx="15" cy="14" r="2" fill="#14b8a6"/>
+                        <circle cx="25" cy="14" r="2" fill="#14b8a6"/>
+                    </svg>
+                    <span class="logo-text font-display text-xl font-bold text-white transition-colors">VetCare Premium</span>
+                </a>
+                
+                <div class="nav-links hidden lg:flex items-center gap-8">
+                    <a href="#servicios" class="nav-link">Servicios</a>
+                    <a href="#nosotros" class="nav-link">Nosotros</a>
+                    <a href="#galeria" class="nav-link">Galeria</a>
+                    <a href="#testimonios" class="nav-link">Testimonios</a>
+                    <a href="#contacto" class="nav-link">Contacto</a>
+                </div>
+                
+                <div class="flex items-center gap-4">
+                    <a href="#contacto" class="hidden sm:flex btn-primary text-sm py-2 px-5">
+                        Agendar Cita
+                    </a>
+                    <button class="mobile-menu-btn" onclick="toggleMobileNav()" aria-label="Abrir menu">
+                        <i data-lucide="menu"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <button class="mobile-close" onclick="toggleMobileNav()" aria-label="Cerrar menu">
+            <i data-lucide="x"></i>
+        </button>
+        <a href="#servicios" class="mobile-nav-link" onclick="toggleMobileNav()">Servicios</a>
+        <a href="#nosotros" class="mobile-nav-link" onclick="toggleMobileNav()">Nosotros</a>
+        <a href="#galeria" class="mobile-nav-link" onclick="toggleMobileNav()">Galeria</a>
+        <a href="#testimonios" class="mobile-nav-link" onclick="toggleMobileNav()">Testimonios</a>
+        <a href="#contacto" class="mobile-nav-link" onclick="toggleMobileNav()">Contacto</a>
+    </div>
+
+    <!-- ========================================
+         HERO SECTION
+    ======================================== -->
+    <section class="hero" id="inicio">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-pattern"></div>
+        
+        <!-- Floating Paws -->
+        <div class="floating-paws" id="floatingPaws"></div>
+        
+        <div class="hero-content max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24">
+            <div class="max-w-2xl">
+                <div class="reveal">
+                    <span class="inline-block bg-vet-500/20 text-vet-300 px-4 py-2 rounded-full text-sm font-medium mb-6 backdrop-blur-sm border border-vet-400/30">
+                        Clinica Veterinaria de Confianza
+                    </span>
+                </div>
+                
+                <h1 class="hero-title reveal reveal-delay-1">
+                    Cuidamos a tu mascota como parte de <span>nuestra familia</span>
+                </h1>
+                
+                <p class="hero-subtitle reveal reveal-delay-2">
+                    Brindamos atencion veterinaria de excelencia con tecnologia de vanguardia y un equipo de especialistas comprometidos con el bienestar de tu companero.
+                </p>
+                
+                <div class="flex flex-wrap gap-4 reveal reveal-delay-3">
+                    <a href="#contacto" class="btn-primary">
+                        <i data-lucide="calendar" class="w-5 h-5"></i>
+                        Agendar Cita
+                    </a>
+                    <a href="https://wa.me/521234567890" target="_blank" class="btn-secondary">
+                        <i data-lucide="message-circle" class="w-5 h-5"></i>
+                        WhatsApp
+                    </a>
+                </div>
+                
+                <div class="flex items-center gap-8 mt-10 reveal reveal-delay-4">
+                    <div class="flex items-center gap-2">
+                        <div class="flex -space-x-2">
+                            <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=40&h=40&fit=crop&crop=face" class="w-10 h-10 rounded-full border-2 border-white object-cover" alt="Cliente">
+                            <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=40&h=40&fit=crop&crop=face" class="w-10 h-10 rounded-full border-2 border-white object-cover" alt="Cliente">
+                            <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=40&h=40&fit=crop&crop=face" class="w-10 h-10 rounded-full border-2 border-white object-cover" alt="Cliente">
+                        </div>
+                        <span class="text-white/80 text-sm">+2,500 clientes felices</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="flex">
+                            <i data-lucide="star" class="w-4 h-4 fill-yellow-400 text-yellow-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-yellow-400 text-yellow-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-yellow-400 text-yellow-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-yellow-400 text-yellow-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-yellow-400 text-yellow-400"></i>
+                        </div>
+                        <span class="text-white/80 text-sm">4.9 valoracion</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i data-lucide="chevron-down" class="w-8 h-8 text-white/50"></i>
+        </div>
+    </section>
+
+    <!-- ========================================
+         STATS SECTION
+    ======================================== -->
+    <section class="stats-section py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="stat-item reveal">
+                    <div class="stat-number">
+                        <span class="counter" data-target="15000">0</span>+
+                    </div>
+                    <div class="stat-label">Mascotas Atendidas</div>
+                </div>
+                <div class="stat-item reveal reveal-delay-1">
+                    <div class="stat-number">
+                        <span class="counter" data-target="8500">0</span>+
+                    </div>
+                    <div class="stat-label">Clientes Satisfechos</div>
+                </div>
+                <div class="stat-item reveal reveal-delay-2">
+                    <div class="stat-number">
+                        <span class="counter" data-target="15">0</span>+
+                    </div>
+                    <div class="stat-label">Anos de Experiencia</div>
+                </div>
+                <div class="stat-item reveal reveal-delay-3">
+                    <div class="stat-number">
+                        <span class="counter" data-target="12">0</span>
+                    </div>
+                    <div class="stat-label">Veterinarios Especialistas</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         SERVICES SECTION
+    ======================================== -->
+    <section class="services-section py-24" id="servicios">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="reveal inline-block text-vet-600 font-semibold text-sm uppercase tracking-wider mb-3">Nuestros Servicios</span>
+                <h2 class="section-title reveal reveal-delay-1">Atencion integral para tu mascota</h2>
+                <p class="section-subtitle reveal reveal-delay-2">Ofrecemos una amplia gama de servicios veterinarios con la mejor tecnologia y profesionales especializados.</p>
+            </div>
+            
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Service Card 1 -->
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <i data-lucide="stethoscope"></i>
+                    </div>
+                    <h3 class="service-title">Consulta General</h3>
+                    <p class="service-desc">Revision completa de salud con diagnostico profesional y tratamiento personalizado.</p>
+                </div>
+                
+                <!-- Service Card 2 -->
+                <div class="service-card reveal reveal-delay-1">
+                    <div class="service-icon">
+                        <i data-lucide="syringe"></i>
+                    </div>
+                    <h3 class="service-title">Vacunacion</h3>
+                    <p class="service-desc">Esquema completo de vacunas para proteger a tu mascota de enfermedades.</p>
+                </div>
+                
+                <!-- Service Card 3 -->
+                <div class="service-card reveal reveal-delay-2">
+                    <div class="service-icon">
+                        <i data-lucide="shield-check"></i>
+                    </div>
+                    <h3 class="service-title">Desparasitacion</h3>
+                    <p class="service-desc">Tratamientos preventivos y curativos contra parasitos internos y externos.</p>
+                </div>
+                
+                <!-- Service Card 4 -->
+                <div class="service-card reveal reveal-delay-3">
+                    <div class="service-icon">
+                        <i data-lucide="activity"></i>
+                    </div>
+                    <h3 class="service-title">Cirugia Veterinaria</h3>
+                    <p class="service-desc">Procedimientos quirurgicos con tecnologia de punta y equipos especializados.</p>
+                </div>
+                
+                <!-- Service Card 5 -->
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <i data-lucide="alert-circle"></i>
+                    </div>
+                    <h3 class="service-title">Emergencias 24/7</h3>
+                    <p class="service-desc">Atencion de urgencias las 24 horas del dia, los 7 dias de la semana.</p>
+                </div>
+                
+                <!-- Service Card 6 -->
+                <div class="service-card reveal reveal-delay-1">
+                    <div class="service-icon">
+                        <i data-lucide="scissors"></i>
+                    </div>
+                    <h3 class="service-title">Peluqueria Canina</h3>
+                    <p class="service-desc">Bano, corte y estilismo profesional para que tu mascota luzca increible.</p>
+                </div>
+                
+                <!-- Service Card 7 -->
+                <div class="service-card reveal reveal-delay-2">
+                    <div class="service-icon">
+                        <i data-lucide="smile"></i>
+                    </div>
+                    <h3 class="service-title">Odontologia Animal</h3>
+                    <p class="service-desc">Limpieza dental, extracciones y tratamientos para la salud bucal.</p>
+                </div>
+                
+                <!-- Service Card 8 -->
+                <div class="service-card reveal reveal-delay-3">
+                    <div class="service-icon">
+                        <i data-lucide="bed"></i>
+                    </div>
+                    <h3 class="service-title">Hospitalizacion</h3>
+                    <p class="service-desc">Instalaciones comodas con monitoreo constante para recuperacion optima.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         ABOUT SECTION
+    ======================================== -->
+    <section class="py-24 bg-gradient-to-b from-slate-50 to-white" id="nosotros">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="reveal">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?w=600&h=500&fit=crop" 
+                             alt="Veterinario atendiendo mascota" 
+                             class="rounded-3xl shadow-2xl w-full object-cover">
+                        <div class="absolute -bottom-6 -right-6 bg-white rounded-2xl p-6 shadow-xl">
+                            <div class="flex items-center gap-4">
+                                <div class="w-14 h-14 bg-vet-100 rounded-full flex items-center justify-center">
+                                    <i data-lucide="award" class="w-7 h-7 text-vet-600"></i>
+                                </div>
+                                <div>
+                                    <div class="font-bold text-2xl text-navy-900">15+</div>
+                                    <div class="text-muted text-sm">Anos de excelencia</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <span class="reveal inline-block text-vet-600 font-semibold text-sm uppercase tracking-wider mb-3">Sobre Nosotros</span>
+                    <h2 class="section-title reveal reveal-delay-1">Una clinica creada con amor por los animales</h2>
+                    <p class="reveal reveal-delay-2 text-muted text-lg leading-relaxed mb-6">
+                        En VetCare Premium, entendemos que tu mascota es parte de tu familia. Por eso, nos hemos comprometido a brindar atencion veterinaria de la mas alta calidad con un enfoque compasivo y profesional.
+                    </p>
+                    <p class="reveal reveal-delay-3 text-muted leading-relaxed mb-8">
+                        Nuestro equipo de veterinarios especializados cuenta con la formacion y experiencia necesarias para cuidar la salud de tu companero. Utilizamos equipos de diagnostico de ultima generacion y seguimos los mas altos estandares de medicina veterinaria.
+                    </p>
+                    
+                    <div class="grid sm:grid-cols-2 gap-6 reveal reveal-delay-4">
+                        <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 bg-vet-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-vet-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-navy-900">Equipo Experto</h4>
+                                <p class="text-muted text-sm">Veterinarios certificados</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 bg-vet-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-vet-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-navy-900">Tecnologia Avanzada</h4>
+                                <p class="text-muted text-sm">Equipos de diagnostico</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 bg-vet-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-vet-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-navy-900">Atencion 24/7</h4>
+                                <p class="text-muted text-sm">Emergencias siempre</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 bg-vet-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-vet-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-navy-900">Ambiente Acogedor</h4>
+                                <p class="text-muted text-sm">Instalaciones comodas</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         GALLERY SECTION
+    ======================================== -->
+    <section class="gallery-section py-24" id="galeria">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="reveal inline-block text-vet-600 font-semibold text-sm uppercase tracking-wider mb-3">Galeria</span>
+                <h2 class="section-title reveal reveal-delay-1">Nuestras mascotas felices</h2>
+                <p class="section-subtitle reveal reveal-delay-2">Conoce a algunos de nuestros pacientes mas adorables y sus transformaciones.</p>
+            </div>
+            
+            <div class="gallery-grid reveal">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=800&h=600&fit=crop" alt="Perro feliz">
+                    <div class="gallery-overlay">
+                        <span class="gallery-caption">Max - Paciente Recuperado</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=400&h=300&fit=crop" alt="Gato atendido">
+                    <div class="gallery-overlay">
+                        <span class="gallery-caption">Luna - Control de Salud</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=400&h=300&fit=crop" alt="Perros jugando">
+                    <div class="gallery-overlay">
+                        <span class="gallery-caption">Rocky y Buddy</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=400&h=300&fit=crop" alt="Perro elegante">
+                    <div class="gallery-overlay">
+                        <span class="gallery-caption">Thor - Peluqueria</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=400&h=300&fit=crop" alt="Perro adorable">
+                    <div class="gallery-overlay">
+                        <span class="gallery-caption">Bella - Vacunacion</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         TESTIMONIALS SECTION
+    ======================================== -->
+    <section class="testimonials-section py-24" id="testimonios">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <span class="reveal inline-block text-vet-300 font-semibold text-sm uppercase tracking-wider mb-3">Testimonios</span>
+                <h2 class="section-title text-white reveal reveal-delay-1">Lo que dicen nuestros clientes</h2>
+                <p class="section-subtitle text-white/70 reveal reveal-delay-2">La satisfaccion de nuestros pacientes y sus familias es nuestra mayor recompensa.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-stars">
+                        <i data-lucide="star"></i>
+                        <i data-lucide="star"></i>
+                        <i data-lucide="star"></i>
+                        <i data-lucide="star"></i>
+                        <i data-lucide="star"></i>
+                    </div>
+                    <p class="testimonial-text">"Excelente atencion! Mi perro Max tenia miedo de los veterinarios, pero aqui lo trataron con tanta paciencia y carino que ahora hasta se emociona cuando lo llevo. 100% recomendados."</p>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=50&h=50&fit=crop&crop=face" alt="Cliente" class="testimonial-avatar">
+                        <div>
+                            <div class="testimonial-name">Maria Gonzalez</div>
+                            <div class="testimonial-pet">Mama de Max (Golden Retriever)</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card reveal reveal-delay-1">
+                    <div class="testimonial-stars">
+                        <i data-lucide="star"></i>
+                        <i data-lucide="star"></i>
+                        <i data-lucide="star"></i>
+                        <i data-lucide="star"></i>
+                        <i data-lucide="star"></i>
+                    </div>
+                    <p class="testimonial-text">"Salvaron la vida de mi gata Luna. El equipo de emergencias actuo rapidisimo y la mantuvieron hospitalizada con todo el cuidado. Estaré eternamente agradecida."</p>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=50&h=50&fit=crop&crop=face" alt="Cliente" class="testimonial-avatar">
+                        <div>
+                            <div class="testimonial-name">Carlos Rodriguez</div>
+                            <div class="testimonial-pet">Papa de Luna (Siamesa)</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card reveal reveal-delay-2">
+                    <div class="testimonial-stars">
+                        <i data-lucide="star"></i>
+                        <i data-lucide="star"></i>
+                        <i data-lucide="star"></i>
+                        <i data-lucide="star"></i>
+                        <i data-lucide="star"></i>
+                    </div>
+                    <p class="testimonial-text">"La peluqueria canina es increible. Mi poodle siempre sale impecable y feliz. Los precios son justos y la atencion de primera. No lo cambio por nada."</p>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=50&h=50&fit=crop&crop=face" alt="Cliente" class="testimonial-avatar">
+                        <div>
+                            <div class="testimonial-name">Ana Martinez</div>
+                            <div class="testimonial-pet">Mama de Coco (Poodle)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         CONTACT SECTION
+    ======================================== -->
+    <section class="contact-section py-24" id="contacto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-16">
+                <div>
+                    <span class="reveal inline-block text-vet-600 font-semibold text-sm uppercase tracking-wider mb-3">Contactanos</span>
+                    <h2 class="section-title reveal reveal-delay-1">Agenda una cita para tu mascota</h2>
+                    <p class="reveal reveal-delay-2 text-muted text-lg mb-8">
+                        Completa el formulario y nos pondremos en contacto contigo para confirmar tu cita. Tambien puedes llamarnos o escribirnos por WhatsApp.
+                    </p>
+                    
+                    <div class="space-y-6 reveal reveal-delay-3">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-vet-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="map-pin" class="w-6 h-6 text-vet-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-navy-900 mb-1">Direccion</h4>
+                                <p class="text-muted">Av. Principal #123, Col. Centro, Ciudad de Mexico, C.P. 06000</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-vet-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="phone" class="w-6 h-6 text-vet-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-navy-900 mb-1">Telefono</h4>
+                                <p class="text-muted">+52 (55) 1234-5678</p>
+                                <p class="text-muted">Emergencias: +52 (55) 1234-5679</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-vet-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="clock" class="w-6 h-6 text-vet-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-navy-900 mb-1">Horario</h4>
+                                <p class="text-muted">Lunes a Viernes: 8:00 AM - 8:00 PM</p>
+                                <p class="text-muted">Sabados: 9:00 AM - 6:00 PM</p>
+                                <p class="text-muted">Domingos: Emergencias 24 hrs</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-container reveal reveal-delay-2">
+                    <form id="appointmentForm">
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div class="form-group">
+                                <label class="form-label" for="name">Nombre completo</label>
+                                <input type="text" id="name" class="form-input" placeholder="Tu nombre" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="phone">Telefono</label>
+                                <input type="tel" id="phone" class="form-input" placeholder="+52 (55) 1234-5678" required>
+                            </div>
+                        </div>
+                        
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div class="form-group">
+                                <label class="form-label" for="petName">Nombre de la mascota</label>
+                                <input type="text" id="petName" class="form-input" placeholder="Nombre de tu mascota" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="petType">Tipo de mascota</label>
+                                <select id="petType" class="form-input" required>
+                                    <option value="">Seleccionar...</option>
+                                    <option value="perro">Perro</option>
+                                    <option value="gato">Gato</option>
+                                    <option value="ave">Ave</option>
+                                    <option value="conejo">Conejo</option>
+                                    <option value="otro">Otro</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div class="form-group">
+                                <label class="form-label" for="service">Servicio</label>
+                                <select id="service" class="form-input" required>
+                                    <option value="">Seleccionar...</option>
+                                    <option value="consulta">Consulta General</option>
+                                    <option value="vacunacion">Vacunacion</option>
+                                    <option value="desparasitacion">Desparasitacion</option>
+                                    <option value="cirugia">Cirugia</option>
+                                    <option value="emergencia">Emergencia</option>
+                                    <option value="peluqueria">Peluqueria</option>
+                                    <option value="odontologia">Odontologia</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="date">Fecha preferida</label>
+                                <input type="date" id="date" class="form-input" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="message">Mensaje (opcional)</label>
+                            <textarea id="message" class="form-input" placeholder="Cuentanos mas sobre tu mascota o el motivo de la consulta..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn-submit">
+                            <i data-lucide="calendar-check" class="w-5 h-5"></i>
+                            Agendar Cita
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         MAP SECTION
+    ======================================== -->
+    <section class="map-section py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="map-container reveal">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.661913907508!2d-99.13320032439737!3d19.432607840959!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ff35f5bd1563%3A0x6c366f0e2de02ff7!2sZocalo%2C%20Centro%20Historico%20de%20la%20Cdad.%20de%20Mexico%2C%20Centro%2C%20Ciudad%20de%20Mexico%2C%20CDMX!5e0!3m2!1ses!2smx!4v1700000000000!5m2!1ses!2smx" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Ubicacion de VetCare Premium">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         FOOTER
+    ======================================== -->
+    <footer class="footer pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <div class="lg:col-span-1">
+                    <div class="footer-logo">VetCare Premium</div>
+                    <p class="footer-desc">Tu clinica veterinaria de confianza. Cuidamos a tu mascota como parte de nuestra familia con amor, profesionalismo y tecnologia de vanguardia.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <i data-lucide="facebook"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <i data-lucide="instagram"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <i data-lucide="twitter"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="YouTube">
+                            <i data-lucide="youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="footer-title">Enlaces Rapidos</h4>
+                    <a href="#servicios" class="footer-link">Servicios</a>
+                    <a href="#nosotros" class="footer-link">Sobre Nosotros</a>
+                    <a href="#galeria" class="footer-link">Galeria</a>
+                    <a href="#testimonios" class="footer-link">Testimonios</a>
+                    <a href="#contacto" class="footer-link">Contacto</a>
+                </div>
+                
+                <div>
+                    <h4 class="footer-title">Servicios</h4>
+                    <a href="#" class="footer-link">Consulta General</a>
+                    <a href="#" class="footer-link">Vacunacion</a>
+                    <a href="#" class="footer-link">Cirugia Veterinaria</a>
+                    <a href="#" class="footer-link">Emergencias 24/7</a>
+                    <a href="#" class="footer-link">Peluqueria Canina</a>
+                </div>
+                
+                <div>
+                    <h4 class="footer-title">Contacto</h4>
+                    <div class="flex items-center gap-2 text-white/70 mb-3">
+                        <i data-lucide="map-pin" class="w-4 h-4"></i>
+                        <span>Av. Principal #123, CDMX</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-white/70 mb-3">
+                        <i data-lucide="phone" class="w-4 h-4"></i>
+                        <span>+52 (55) 1234-5678</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-white/70 mb-3">
+                        <i data-lucide="mail" class="w-4 h-4"></i>
+                        <span>info@vetcarepremium.com</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-white/70">
+                        <i data-lucide="clock" class="w-4 h-4"></i>
+                        <span>Lun-Vie: 8AM-8PM</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>2024 VetCare Premium. Todos los derechos reservados. Diseñado con amor para las mascotas.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========================================
+         WHATSAPP BUTTON
+    ======================================== -->
+    <a href="https://wa.me/521234567890" target="_blank" class="whatsapp-btn" aria-label="Contactar por WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+    </a>
+
+    <!-- ========================================
+         CHATBOT
+    ======================================== -->
+    <button class="chat-toggle" id="chatToggle" aria-label="Abrir chat de ayuda">
+        <i data-lucide="message-circle"></i>
+    </button>
+    
+    <div class="chatbot-container" id="chatbot">
+        <div class="chatbot-header">
+            <div class="chatbot-avatar">
+                <i data-lucide="bot"></i>
+            </div>
+            <div class="chatbot-info">
+                <h4>VetBot Asistente</h4>
+                <span>En linea - Listo para ayudarte</span>
+            </div>
+        </div>
+        
+        <div class="chatbot-messages" id="chatMessages">
+            <div class="chat-message bot">
+                Hola! Soy VetBot, tu asistente virtual de VetCare Premium. Como puedo ayudarte hoy?
+            </div>
+        </div>
+        
+        <div class="quick-options">
+            <button class="quick-option" onclick="sendQuickMessage('Horarios de atencion')">Horarios</button>
+            <button class="quick-option" onclick="sendQuickMessage('Servicios disponibles')">Servicios</button>
+            <button class="quick-option" onclick="sendQuickMessage('Agendar una cita')">Citas</button>
+            <button class="quick-option" onclick="sendQuickMessage('Emergencias')">Emergencias</button>
+        </div>
+        
+        <div class="chatbot-input">
+            <input type="text" id="chatInput" placeholder="Escribe tu mensaje..." onkeypress="handleChatKeypress(event)">
+            <button class="chatbot-send" onclick="sendChatMessage()" aria-label="Enviar mensaje">
+                <i data-lucide="send"></i>
+            </button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
